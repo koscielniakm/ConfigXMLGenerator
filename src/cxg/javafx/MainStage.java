@@ -2,7 +2,6 @@ package cxg.javafx;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,7 +14,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class MainWindow extends Application {
+public class MainStage extends Stage {
 
 	private static final int WINDOW_WIDTH = 300;
 	private static final int WINDOW_HEIGHT = 225;
@@ -32,13 +31,12 @@ public class MainWindow extends Application {
 	private Button aboutBtn;
 	private Button exitBtn;
 	
-	@Override
-	public void start(Stage rootStage) {
-		loadComponents(rootStage);
-		setRootStageProperties(rootStage);
+	public MainStage() {
+		loadComponents();
+		setRootStageProperties();
 	}
 	
-	private void loadComponents(Stage stage) {
+	private void loadComponents() {
 		loadLayout();
 		loadTitleText();
 		loadJpaButton();
@@ -47,9 +45,8 @@ public class MainWindow extends Application {
 		loadExitButton();
 		addComponentsToLayout();
 		setLayoutProperties();
-		loadMainScene(stage);
+		loadMainScene();
 	}
-	
 	private void loadLayout() {
 		layout = new VBox();
 	}
@@ -87,9 +84,9 @@ public class MainWindow extends Application {
 			}
 		});
 	}
-	private void loadMainScene(Stage stage) {
+	private void loadMainScene() {
 		mainScene = new Scene(layout);
-		stage.setScene(mainScene);
+		setScene(mainScene);
 	}
 	
 	private void addComponentsToLayout() {
@@ -108,28 +105,24 @@ public class MainWindow extends Application {
 		layout.setSpacing(10);
 	}
 	
-	private void setRootStageProperties(Stage rootStage) {
-		setDefaultWindowDimension(rootStage);
-		setIcon(rootStage);
-		rootStage.setTitle(APP_TITLE);
-		rootStage.setResizable(false);
-		rootStage.show();
+	private void setRootStageProperties() {
+		setDefaultWindowDimension();
+		setIcon();
+		setTitle(APP_TITLE);
+		setResizable(false);
+		show();
 	}
-	private void setDefaultWindowDimension(Stage stage) {
-		stage.setWidth(WINDOW_WIDTH);
-		stage.setHeight(WINDOW_HEIGHT);
+	private void setDefaultWindowDimension() {
+		setWidth(WINDOW_WIDTH);
+		setHeight(WINDOW_HEIGHT);
 	}
-	private void setIcon(Stage stage) {
+	private void setIcon() {
 		try {
 			icon = new Image(new FileInputStream(PathContainer.PATH_ICON));
-			stage.getIcons().add(icon);
+			getIcons().add(icon);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public static void main(String[] args) {
-		launch();
 	}
 	
 }
