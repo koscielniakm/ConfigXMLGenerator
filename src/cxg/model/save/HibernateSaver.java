@@ -6,21 +6,21 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import cxg.model.xmlmodel.jpa.Persistence;
+import cxg.model.xmlmodel.hibernate.HibernateConfiguration;
 
-public class JpaSaver extends AbstractXmlSaver implements XmlSaver {
+public class HibernateSaver extends AbstractXmlSaver implements XmlSaver {
 
-	private Persistence persistence;
+	private HibernateConfiguration hibernateConfiguration;
 	
-	public JpaSaver(Persistence persistence) {
-		this.persistence = persistence;
+	public HibernateSaver(HibernateConfiguration hibernateConfiguration) {
+		this.hibernateConfiguration = hibernateConfiguration;
 		createJaxbContext();
 		loadMarshaller(getJaxbContext());
 	}
 	
 	public void createJaxbContext() {
 		try {
-			JAXBContext currentContext = JAXBContext.newInstance(Persistence.class);
+			JAXBContext currentContext = JAXBContext.newInstance(HibernateConfiguration.class);
 			super.setJaxbContext(currentContext);
 		} catch(JAXBException e) {
 			e.printStackTrace();
@@ -30,7 +30,7 @@ public class JpaSaver extends AbstractXmlSaver implements XmlSaver {
 	public void save(String path) {
 		try {
 			Marshaller m = getMarshaller();
-			m.marshal(persistence, new File("persistence.xml"));	
+			m.marshal(hibernateConfiguration, new File("hibernate.cfg.xml"));	
 		} catch(JAXBException e) {
 			e.printStackTrace();
 		}
