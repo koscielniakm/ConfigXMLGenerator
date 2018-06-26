@@ -13,9 +13,24 @@ public class JpaSaver extends AbstractXmlSaver implements XmlSaver {
 	private Persistence persistence;
 	
 	public JpaSaver(Persistence persistence) {
+		chceckPersistenceAttributesExist(persistence);
+		checkPersistenceUnitExist(persistence);
 		this.persistence = persistence;
 		createJaxbContext();
 		loadMarshaller(getJaxbContext());
+	}
+	
+	public void chceckPersistenceAttributesExist(Persistence persistence) {
+		if(	persistence.getXmlns() == null ||
+			persistence.getXmlnsXsi() == null ||
+			persistence.getXsiSchemaLocation() == null ||
+			persistence.getVersion() == null
+		) throw new IllegalArgumentException();
+	}
+	
+	public void checkPersistenceUnitExist(Persistence persistence) {
+		if(persistence.getPersistenceUnit() == null)
+			throw new IllegalArgumentException();
 	}
 	
 	public void createJaxbContext() {
