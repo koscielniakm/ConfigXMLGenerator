@@ -13,6 +13,8 @@ public class Persistence {
 	private static final String version = "2.0";
 	private PersistenceUnit persistenceUnit;
 	
+	public Persistence() { }
+	
 	public Persistence(PersistenceUnit persistenceUnit) {
 		this.persistenceUnit = persistenceUnit;
 	}

@@ -14,6 +14,8 @@ public class PersistenceUnit {
 	private String name;
 	private Properties properties;
 	
+	public PersistenceUnit() { }
+	
 	public PersistenceUnit(Properties properties, String persistenceUnitName) {
 		this.name = persistenceUnitName;
 		this.properties = properties;
