@@ -1,7 +1,6 @@
 package cxg.model.save;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.junit.Before;
@@ -22,13 +21,13 @@ public class JpaSaverTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testCreateSaverWithoutPersistenceAttributes() {
+	public void testCreateSaverWithoutCompletedPersistenceAttributes() {
 		setCorrectPersistenceUnit();
 		saver = new JpaSaver(persistence);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testCreateSaverWithoutPersistenceUnit() {
+	public void testCreateSaverWithoutCompletedPersistenceUnit() {
 		setCorrectPersistenceAttributes();
 		saver = new JpaSaver(persistence);
 	}
