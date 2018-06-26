@@ -10,6 +10,10 @@ public class HibernateConfiguration {
 	
 	public HibernateConfiguration() { }
 
+	public HibernateConfiguration(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+	
 	@XmlElement(name = "session-factory")
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;

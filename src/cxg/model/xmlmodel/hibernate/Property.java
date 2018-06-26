@@ -12,6 +12,11 @@ public class Property {
 	
 	public Property() { }
 
+	public Property(String name, String value) {
+		this.name = name;
+		this.value = value;
+	}
+	
 	@XmlAttribute
 	public String getName() {
 		return name;

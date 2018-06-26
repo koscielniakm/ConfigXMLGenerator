@@ -15,6 +15,10 @@ public class SessionFactory {
 		property = new ArrayList<>();
 	}
 	
+	public SessionFactory(List<Property> propertyList) {
+		this.property = propertyList;
+	}
+	
 	@XmlElement
 	public List<Property> getProperty() {
 		return property;
