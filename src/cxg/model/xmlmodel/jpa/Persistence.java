@@ -7,13 +7,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="persistence")
 public class Persistence {
 
-	private String xmlns;
-	private String xmlnsXsi;
-	private String xsiSchemaLocation;
-	private String version;
+	private static final String xmlns = "http://java.sun.com/xml/ns/persistence";
+	private static final String xmlnsXsi = "http://www.w3.org/2001/XMLSchema-instance";
+	private static final String xsiSchemaLocation = "http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd";
+	private static final String version = "2.0";
 	private PersistenceUnit persistenceUnit;
 	
-	public Persistence() { }
+	public Persistence(PersistenceUnit persistenceUnit) {
+		this.persistenceUnit = persistenceUnit;
+	}
 
 	@XmlAttribute
 	public String getXmlns() {
@@ -38,22 +40,6 @@ public class Persistence {
 	@XmlElement(name = "persistence-unit")
 	public PersistenceUnit getPersistenceUnit() {
 		return persistenceUnit;
-	}
-	
-	public void setXmlns(String xmlns) {
-		this.xmlns = xmlns;
-	}
-	
-	public void setXmlnsXsi(String xmlnsXsi) {
-		this.xmlnsXsi = xmlnsXsi;
-	}
-	
-	public void setXsiSchemaLocation(String xsiSchemaLocation) {
-		this.xsiSchemaLocation = xsiSchemaLocation;
-	}
-	
-	public void setVersion(String version) {
-		this.version = version;
 	}
 	
 	public void setPersistenceUnit(PersistenceUnit persistenceUnit) {

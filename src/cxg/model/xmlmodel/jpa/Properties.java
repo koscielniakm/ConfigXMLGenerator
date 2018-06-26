@@ -1,6 +1,5 @@
 package cxg.model.xmlmodel.jpa;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -11,8 +10,8 @@ public class Properties {
 
 	List<Property> property;
 	
-	public Properties() {
-		property = new ArrayList<>();
+	public Properties(List<Property> propertyList) {
+		property = propertyList;
 	}
 
 	@XmlElement
@@ -23,7 +22,5 @@ public class Properties {
 	public void setProperty(List<Property> property) {
 		this.property = property;
 	}
-	
-	
 	
 }

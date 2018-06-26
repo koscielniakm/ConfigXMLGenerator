@@ -9,12 +9,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder={"provider", "properties"})
 public class PersistenceUnit {
 
+	private static final String transactionType = "RESOURCE_LOCAL";
+	private static final String provider = "org.hibernate.jpa.HibernatePersistenceProvider";
 	private String name;
-	private String transactionType;
-	private String provider;
 	private Properties properties;
 	
-	public PersistenceUnit() { }
+	public PersistenceUnit(Properties properties, String persistenceUnitName) {
+		this.name = persistenceUnitName;
+		this.properties = properties;
+	}
 
 	@XmlAttribute
 	public String getName() {
@@ -39,19 +42,9 @@ public class PersistenceUnit {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public void setTransactionType(String transactionType) {
-		this.transactionType = transactionType;
-	}
-
-	public void setProvider(String provider) {
-		this.provider = provider;
-	}
-
+	
 	public void setProperties(Properties properties) {
 		this.properties = properties;
 	}
-
-
 	
 }
