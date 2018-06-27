@@ -14,6 +14,7 @@ public class JpaGeneratorStageUserDatasFactory {
 		userDatas.put("db-password", getDbPasswordTextField());
 		userDatas.put("url", getUrlTextField());
 		userDatas.put("dialect", getDialectTextField());
+		userDatas.put("path", getOutputPathTextField());
 		return userDatas;
 	}
 	
@@ -57,6 +58,13 @@ public class JpaGeneratorStageUserDatasFactory {
 		dialectTextField.setPromptText("Dialect (ex. org.hibernate.dialect.MySQL5Dialect)");
 		dialectTextField.getStyleClass().add("textfield");	
 		return dialectTextField;
+	}
+	
+	private static TextField getOutputPathTextField() {
+		TextField outputPathTextField = new TextField();
+		outputPathTextField.setPromptText("Output path");
+		outputPathTextField.getStyleClass().add("textfield");	
+		return outputPathTextField;
 	}
 	
 }
