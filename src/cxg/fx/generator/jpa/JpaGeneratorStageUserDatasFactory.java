@@ -1,4 +1,4 @@
-package cxg.fx;
+package cxg.fx.generator.jpa;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

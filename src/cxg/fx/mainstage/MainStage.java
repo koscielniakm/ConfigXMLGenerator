@@ -1,15 +1,18 @@
-package cxg.fx;
+package cxg.fx.mainstage;
 
 import java.util.List;
 
+import cxg.fx.AbstractStage;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
-public class MainStage extends Stage {
+public class MainStage extends AbstractStage {
 	
 	private static final String TITLE = "Config Xml Generator";
 	private static final String FOOTER_TEXT = "Author: Mateusz Kościelniak";
@@ -28,7 +31,7 @@ public class MainStage extends Stage {
 		setLayoutProperties();
 		addMainSceneToStage();
 		setStageProperties();
-		activeCss();
+		activeCss(layout, mainScene);
 	}
 	
 	private void initStageElements() {
@@ -55,17 +58,17 @@ public class MainStage extends Stage {
 		setHeight(240);
 		setTitle(TITLE);
 		setResizable(false);
+		setOnCloseRequest(new EventHandler<WindowEvent>() {
+			public void handle(WindowEvent event) {
+				Platform.exit();
+			}
+		});
 		show();
 	}
 	
 	private void setLayoutProperties() {
 		layout.setSpacing(10);
 		layout.setAlignment(Pos.TOP_CENTER);
-	}
-	
-	private void activeCss() {
-		layout.getStyleClass().add("layout");	
-		mainScene.setUserAgentStylesheet("css/style.css");
 	}
 	
 }

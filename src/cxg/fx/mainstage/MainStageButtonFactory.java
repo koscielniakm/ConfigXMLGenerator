@@ -1,8 +1,10 @@
-package cxg.fx;
+package cxg.fx.mainstage;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import cxg.fx.generator.hibernate.HibernateGeneratorStage;
+import cxg.fx.generator.jpa.JpaGeneratorStage;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -10,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 
 public class MainStageButtonFactory {
-
+	
 	public static List<Button> getButtonList() {
 		List<Button> buttons = new ArrayList<>();
 		buttons.add(getJpaGeneratorButton());
