@@ -11,21 +11,17 @@ import javafx.scene.control.TextField;
 
 public class GeneratorButtonFactory {
 
-	public static List<Button> getButtons(GeneratorStage stage) {
+	public static List<Button> getButtons(GeneratorStage stage, EventHandler<ActionEvent> okButtonEvent) {
 		Map<String, TextField> userDatas = stage.getUserDatas();
 		List<Button> stageButtons = new ArrayList<>();
-		stageButtons.add(getOkButton());
+		stageButtons.add(getOkButton(okButtonEvent));
 		stageButtons.add(getClearButton(userDatas));
 		return stageButtons;
 	}
 	
-	public static Button getOkButton() {
+	public static Button getOkButton(EventHandler<ActionEvent> buttonEvent) {
 		Button okButton = new Button("Generate!");
-		okButton.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				System.out.println("TODO IMPL");
-			}
-		});
+		okButton.setOnAction(buttonEvent);
 		return okButton;
 	}
 	

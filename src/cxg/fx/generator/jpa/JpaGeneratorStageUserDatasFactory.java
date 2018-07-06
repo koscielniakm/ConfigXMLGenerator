@@ -62,7 +62,7 @@ public class JpaGeneratorStageUserDatasFactory {
 	
 	private static TextField getOutputPathTextField() {
 		TextField outputPathTextField = new TextField();
-		outputPathTextField.setPromptText("Output path");
+		outputPathTextField.setPromptText("Output path (optional)");
 		outputPathTextField.getStyleClass().add("textfield");	
 		return outputPathTextField;
 	}

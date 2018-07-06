@@ -30,7 +30,7 @@ public class JpaSaver extends AbstractXmlSaver implements XmlSaver {
 	public void save(String path) {
 		try {
 			Marshaller m = getMarshaller();
-			m.marshal(persistence, new File("persistence.xml"));	
+			m.marshal(persistence, new File(path + "/" + "persistence.xml"));	
 		} catch(JAXBException e) {
 			e.printStackTrace();
 		}
